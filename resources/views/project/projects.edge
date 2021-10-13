@@ -17,7 +17,6 @@
     flex: 40%;
     margin-bottom: 1rem;
     margin-right: 1rem;
-    background-color: rgba(86, 188, 228, 0.144);
   }
 </style>
 <div class="container uk-animation-fade">
@@ -35,18 +34,29 @@
   <div uk-sortable="handle: .uk-sortable-handle" class="container">
     @each (project in projects)
     <div
-      class="
-        uk-sortable-handle
+      class=" 
         project
-        uk-card uk-card-default uk-card-body uk-width-1-2@m">
+        uk-card uk-card-hover uk-card-default uk-card-body uk-width-1-2@m">
       <div class="uk-align-right uk-text-large">
         <a href="projects/create"
           ><div uk-icon="icon:file-edit"></div>
         </a>
       </div>
-      <h1 class="uk-card-title">{{ project.name }}</h1>
-      <p class="uk-article">{{ project.description }}</p>
+      <div>
+        <a href="projects/{{project.id}}"class="uk-card-title">{{ project.name }}</a>
+      </div>
       <hr class="uk-divider-icon" />
+      
+      <div uk-dropdown="pos:bottom-justify" class="uk-article">
+        <a href="projects/{{project.id}}"class="uk-align-right uk-text-primary"uk-icon="expand">
+        </a>
+        <p>Id : {{project.id}}</p>
+        <p>{{ project.description }}</p>
+
+        <a href="projects/{{project.id}}"class="uk-text-danger"uk-icon="trash">
+          
+        </a>
+      </div>
     </div>
     @endeach
   </div>
