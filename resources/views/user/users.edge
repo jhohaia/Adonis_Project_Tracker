@@ -49,8 +49,11 @@
         <td>{{ user.password }}</td>
         <td>{{ user.createdAt }}</td>
         <td>{{ user.updatedAt }}</td>
-        <td><a href="users/{{ user.id }}">view</a></td>
-        <td><a href="users/{{ user.id }}/edit">edit</a></td>
+        <td ><a href="users/{{ user.id }}"class="uk-text-primary"uk-icon=" icon:search"></a>
+        <div uk-dropdown="pos:top-right">click to view {{user.username}}</div></td>
+        
+        <td><a href="users/{{ user.id }}/edit"class="uk-text-primary"uk-icon="icon:file-edit"></a> 
+          <div uk-dropdown="pos:top-center">click to edit {{user.username}}</div></td>
         <td>
           <form
             method="post"
@@ -62,9 +65,10 @@
               type="submit"
               class="uk-button uk-button-link uk-text-lowercase uk-text-danger"
               onclick="return confirm('Are you sure you want to delete this user?');"
-            >
-              Delete
+              uk-icon="trash"
+              >
             </button>
+            <div uk-dropdown="pos:top-left">click to delete {{user.username}}</div>
           </form>
         </td>
       </tr>
