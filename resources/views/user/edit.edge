@@ -1,0 +1,58 @@
+@layout('layouts/master') 
+@section('body')
+<style>
+  div {
+    margin-left: 2rem;
+    padding-right: 1rem;
+    padding-top:1rem;
+  }
+</style>
+<div class="uk-animation-scale-up uk-transform-origin-top-left">
+  <h1>Editing - {{ user.username }}</h1>
+  <a class="uk-padding-top" href="/users">Back</a>
+  <form
+    class="uk-grid-small"
+    uk-grid
+    method="post"
+    action="{{ route('users.update', { id: user.id }) }}?_method=PUT"
+  >
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Username"
+        name="username"
+        value="{{ user.username }}"
+      />
+    </div>
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Email"
+        name="email"
+        value="{{ user.email }}"
+      />
+    </div>
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Password"
+        name="password"
+        value="{{ user.password }}"
+      />
+    </div>
+    <div class="uk-width-1-6@s">
+      <span class="uk-margin-right">Active?</span>
+      <input class="uk-checkbox" type="checkbox" checked name="active"{{
+        user.active !== "" ? "checked" : ""
+      }}
+      />
+    </div>
+    <div class="uk-width-1-2@s">
+      <button class="uk-button uk-button-primary">Update</button>
+    </div>
+  </form>
+</div>
+@endsection

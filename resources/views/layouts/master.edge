@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/uikit@3.7.5/dist/css/uikit.min.css"/>
+  </head>
+  <style>
+      nav{margin-left:1rem;}
+  </style>
+  <body>
+    <nav>
+      <ul class="uk-navbar-nav">
+        <li><a href="/">Home</a></li>        
+        <li><a href="/users">All Users</a></li>
+        <li><a href="/projects">All Projects</a></li>
+      </ul>
+    </nav>
+    <main>
+        @!section('body')
+    </main>
+    <footer></footer>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.7.5/dist/js/uikit-icons.min.js"></script>
+  </body>
+</html>

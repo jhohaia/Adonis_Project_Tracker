@@ -1,0 +1,39 @@
+@layout('layouts/master')
+@section('body')
+<style>
+  .none{
+      color:red;
+  }
+      li{
+          padding:.5rem;
+      }
+      div{
+        margin-left:2rem;
+      }
+</style>
+<div class="uk-animation-scale-up uk-transform-origin-top-left">
+<h1>Showing {{ user.username }}</h1>
+<a href="/users">Back</a>
+
+  <h3>Details:</h3>
+  <ul>
+    <li>Id: {{ user.id }}</li>
+    <li>Username: {{ user.username }}</li>
+    <li>Password: {{ user.password }}</li>
+    <li>Created: {{ user.createdAt }}</li>
+    <li>Last Updated: {{ user.updatedAt }}</li>
+  </ul>
+
+  @if(user.profile)
+  <h3>Profile</h3>
+  <ul>
+    <li>Fullname: {{ user.profile.fullname }}</li>
+    <li>Avatar: {{ user.profile.avatar }}</li>
+  </ul>
+  @else
+  <h3 class="none">No Profile</h3>
+  <p>Cannot find a profile associated with this User</p>
+  <img src="https://media2.giphy.com/media/l3q2PZSVUUEsajBIY/giphy.gif?cid=790b7611febafd0e34f0911d30afc93c5f4139402024157b&rid=giphy.gif&ct=g"/>
+  @end
+</div>
+@endsection

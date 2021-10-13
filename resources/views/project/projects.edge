@@ -1,0 +1,44 @@
+@layout('layouts/master') 
+@section('body')
+<style>
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: flex-start;
+    margin-left:1rem;
+  }
+
+  .title{
+    margin-left:1rem;
+  }
+
+  .project{
+    flex:40%;
+    margin-bottom:1rem;
+    margin-right: 1rem;
+    background-color: rgba(86, 188, 228, 0.144);
+
+  }
+
+</style>
+<div class="container uk-animation-fade">
+  <div class="title uk-animation-slide-top">
+    <h1>{{ pageTitle }}
+      <div class="uk-align-right uk-text-large">
+        <a href="projects/create"><div uk-icon="icon: plus-circle">
+        </div> new </a></div>
+    </h1>
+    </div>
+    <div class="container uk-animation-fade">
+      @each (project in projects)
+      <div class="project uk-card uk-card-default uk-card-body uk-width-1-2@m">
+        <h1 class="uk-card-title" 
+        >{{ project.name }}</h1>     
+        <p class="uk-article">{{ project.description }}</p>
+        <hr class="uk-divider-icon"/>
+    </div>
+      @endeach
+      </div>
+@endsection

@@ -1,0 +1,44 @@
+@layout('layouts/master') 
+@section('body')
+<style>
+  div {
+    margin-left: 2rem;
+    padding-right: 1rem;
+    padding-top:1rem;
+  }
+
+
+</style>
+<div class="uk-animation-scale-up uk-transform-origin-top-left">
+  <h1>{{ pageTitle }}</h1>
+  <a class="uk-padding-top" href="/users">Back</a>
+  <form class="uk-grid-small" uk-grid method="post" action="/users">
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Username"
+        name="username"
+      />
+    </div>
+    <div class="uk-width-1-2@s">
+      <input class="uk-input" type="text" placeholder="Email" name="email" />
+    </div>
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Password"
+        name="password"
+      />
+    </div>
+    <div class="uk-width-1-6@s">
+      <span class="uk-margin-right">Active?</span
+      ><input class="uk-checkbox" type="checkbox" checked name="active" />
+    </div>
+    <div class="uk-width-1-2@s">
+      <button class="uk-button uk-button-primary">Submit</button>
+    </div>
+  </form>
+</div>
+@endsection
