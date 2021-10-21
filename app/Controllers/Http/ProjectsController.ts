@@ -35,6 +35,10 @@ export default class ProjectsController {
     
     public async update(){}
 
-    public async destroy(){}
+    public async destroy({ response, params }: { response: { redirect: (arg0: string) => any; }; params: { id: any; }; }){
+        const project = await Project.findOrFail(params.id)
+        await project.delete();
+        return response.redirect('/projects')
+    }
 
 }
