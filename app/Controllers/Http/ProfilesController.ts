@@ -21,8 +21,8 @@ export default class ProfilesController {
 
     public async store({response,request}){
         let postData = request.only(['id','user_id','fullname','avatar'])
-        let data = await Profile.create(postData)
-        return response.json({reply:data});
+        await Profile.create(postData);
+        return response.redirect("/users");
     }
 
     public async edit({view,params}){
