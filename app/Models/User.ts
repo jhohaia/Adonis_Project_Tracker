@@ -5,6 +5,9 @@ import Todo from './Todo'
 import Project from './Project'
 
 export default class User extends BaseModel {
+  static paginate(arg0: any, arg1: number) {
+    throw new Error('Method not implemented.')
+  }
   @column({ isPrimary: true })
   public id: number
 

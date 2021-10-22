@@ -1,12 +1,26 @@
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
+import Database from '@ioc:Adonis/Lucid/Database';
 // import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from "App/Models/User";
 
 export default class UsersController {
-  async index({ view }) {
+  // async index({ view }) {
+  //   let pageTitle = "All Users";
+  //   let g = await User.all();
+  //   let users = g.reverse();
+  //   return view.render("user/users", { pageTitle, users });
+  // }
+
+  public async index ({ request, view }: HttpContextContract) {
     let pageTitle = "All Users";
+    const page = request.input('users', 1)
+    const limit = 3
+    const posts = await Database.from('users').paginate(page, limit)
     let g = await User.all();
     let users = g.reverse();
-    return view.render("user/users", { pageTitle, users });
+    // Changes the baseURL for the pagination links
+    posts.baseUrl("/user/users");
+    return view.render('user/users', { users, pageTitle })
   }
 
   public async show({ view, params }) {
