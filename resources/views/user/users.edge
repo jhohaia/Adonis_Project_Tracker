@@ -12,7 +12,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    margin-left:2rem;
+    margin-left:3rem;
   }
   .main{
       display:flex;
@@ -22,7 +22,7 @@
 
 </style>
 <div class="container uk-animation-fade">
-  <div class="main uk-animation-slide-top">
+  <div class="main ">
     <h1>{{ pageTitle }}
       <div class="uk-align-right uk-text-large">
         <a href="users/create"><div uk-icon="icon: plus-circle">
@@ -75,15 +75,17 @@
       @endeach
     </table>
     </div>
+
     <ul class="uk-pagination" uk-margin>
-      <li><a href="#"><span uk-pagination-previous></span></a></li>
-      <li class="uk-active"><span>1</span></li>
-      <li><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li class="uk-disabled"><span>...</span></li>
-      <li><a href="#">20</a></li>
-      <li><a href="#"><span uk-pagination-next></span></a></li>
-  </ul>
+      <li><a href="/users/?page=1"><span uk-pagination-previous></span></a></li>
+      @each(user in users.getUrlsForRange(1, users.lastPage))
+      <li><a href="{{ user.url }}">
+        {{ user.page }}
+      </a></li>
+      @endeach
+      <li><a href="/users/?page=2" action="!next"><span uk-pagination-next></span></a></li>
+    </ul>
+
   </div>
 </div>
 @endsection

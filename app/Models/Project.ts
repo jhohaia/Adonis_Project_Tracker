@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 
 export default class Project extends BaseModel {
   @column({ isPrimary: true })
@@ -12,11 +12,12 @@ export default class Project extends BaseModel {
   public description:string
 
   @column()
-  public status_id:number
+  public status_id:string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
 }

@@ -13,13 +13,13 @@ export default class UsersController {
 
   public async index ({ request, view }: HttpContextContract) {
     let pageTitle = "All Users";
-    const page = request.input('users', 1)
+    const page = request.input('page', 1)
     const limit = 3
-    const posts = await Database.from('users').paginate(page, limit)
-    let g = await User.all();
-    let users = g.reverse();
+    const users = await Database
+    .from('users')
+    .paginate(page, limit)
     // Changes the baseURL for the pagination links
-    posts.baseUrl("/user/users");
+    users.baseUrl("/users");
     return view.render('user/users', { users, pageTitle })
   }
 

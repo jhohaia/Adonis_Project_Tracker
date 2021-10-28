@@ -34,48 +34,51 @@
         </a>
       </div>
     </h1>
-    @each (project in projects)
-    <div
-      class=" 
-        project 
-        uk-card uk-card-hover uk-card-default uk-card-body uk-width-1-2@m">
-      <div class="uk-align-right uk-text-large">
-        <a href="projects/create"
-          ><div uk-icon="icon:file-edit"></div>
-        </a>
-      </div>
-      <div>
-        <a href="projects/{{project.id}}"class="uk-card-title">{{ project.name }}</a>
-      </div>
-      <hr class="uk-divider-icon" />
-      
-      <div uk-dropdown="pos:bottom-justify" class="uk-article">
-        <a href="projects/{{project.id}}"class="uk-align-right uk-text-primary"uk-icon="expand">
-        </a>
-        <p>Id : {{project.id}}</p>
-        <p>{{ project.description }}</p>
+      <!-- if(project.name) -->
+      @each (project in projects)
+      <div
+        class=" 
+          project 
+          uk-card uk-card-hover uk-card-default uk-card-body uk-width-1-2@m">
+        <div class="uk-align-right uk-text-large">
+          <a href="projects/{{project.id}}/edit"
+            ><div uk-icon="icon:file-edit"></div>
+          </a>
+        </div>
+        <div>
+          <a href="projects/{{project.id}}"class="uk-card-title">{{ project.name }}</a>
+        </div>
+        <hr class="uk-divider-icon" />
+        
+        <div uk-dropdown="pos:bottom-justify" class="uk-article">
+          <a href="projects/{{project.id}}"class="uk-align-right uk-text-primary"uk-icon="expand">
+          </a>
+          <p>Id : {{project.id}}</p>
+          <p>{{ project.description }}</p>
 
-          <form
-          method="post"
-          action="{{
-            route('projects.destroy', { id: project.id })
-          }}?_method=DELETE"
-          >
-           <button
-           href="projects/{{project.id}}"class="uk-text-danger"uk-icon="trash"
-              type="submit"
-              class="uk-button uk-button-link uk-text-lowercase uk-text-danger"
-              onclick="return confirm('Are you sure you want to delete this user?');"
-              uk-icon="trash"
-                >
-                </button>
-              <div uk-dropdown="pos:top-left">click to delete {{project.name}}</div>
-            </form>
-          </td>
+            <form
+            method="post"
+            action="{{
+              route('projects.destroy', { id: project.id })
+            }}?_method=DELETE"
+            >
+            <button
+            href="projects/{{project.id}}"class="uk-text-danger"uk-icon="trash"
+                type="submit"
+                class="uk-button uk-button-link uk-text-lowercase uk-text-danger"
+                onclick="return confirm('Are you sure you want to delete this user?');"
+                uk-icon="trash"
+                  >
+                  </button>
+                <div uk-dropdown="pos:top-left">click to delete {{project.name}}</div>
+              </form>
+            </td>
 
+        </div>
       </div>
+      @endeach
+    <!-- @else
+    <h3 class="uk-text-danger">No Profile Found</h3> -->
     </div>
-    @endeach
-  </div>
 @endsection
 

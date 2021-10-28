@@ -1,0 +1,54 @@
+@layout('layouts/master') 
+@section('body')
+<style>
+  div {
+    margin-left: 2rem;
+    padding-right: 1rem;
+    padding-top:1rem;
+  }
+
+
+</style>
+<div class="uk-animation-scale-up uk-transform-origin-top-left">
+  <h1>{{ pageTitle }}</h1>
+  <a class="uk-padding-top" href="/projects">Back</a>
+  <form class="uk-grid-small" uk-grid method="post" action="/projects">
+
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Project Name"
+        name="name"
+      />
+    </div>
+    <div class="uk-width-1-2@s">
+      <input
+        class="uk-input"
+        type="text"
+        placeholder="Description"
+        name="description"
+      />
+    </div>
+
+    <div class="uk-height-medium uk-width-1-5@s uk-form-controls" data-uk-form-select >
+      <select placeholder="Assign Users" class="uk-height-1-1 uk-select" multiple>
+        <option value=""disabled selected>Assign Users</option>
+        @each(user in user)
+        <option class=""type="text"name="users" >{{user.username}}</option>
+        @endeach
+      </select>
+    </div>
+    
+    <div class="uk-width-1-6@s">
+      <span class="uk-margin-right">Status?</span
+      ><input class="uk-checkbox" type="checkbox" checked name="active" />
+    </div>
+
+    <div class="uk-width-1-6@s">
+      <button class="uk-button uk-button-primary">Submit</button>
+    </div>
+
+  </form>
+</div>
+@endsection
